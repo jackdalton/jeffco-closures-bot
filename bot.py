@@ -1,4 +1,5 @@
 from creds import *
+from keywords import keywords
 from time import sleep
 import tweepy
 
@@ -15,10 +16,13 @@ def log(text):
 def check_tweets():
     tweets = api.user_timeline("JeffcoSchoolsCo", count=1)
     text = tweets[0].text
-    if "cancel" in text or "close" in text or "Cancel" in text or "Close" in text:
-        api.retweet(tweets[0].id)
-        log("RT:\n%s" % text)
-    else:
+    found = False
+    for i in keywords:
+        if i in text.lower():
+            api.retweet(tweets[0].id)
+            log("RT:\n%s" % text)
+            found = True
+    if not found:
         log("No keywords found:\n%s" % text)
     sleep(90) # sleep for 90 seconds
     check_tweets()
