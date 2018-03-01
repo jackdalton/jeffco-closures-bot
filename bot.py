@@ -16,11 +16,11 @@ def check_tweets():
         if i in text.lower():
             api.retweet(tweets[0].id)
             print("RT:\n%s" % text)
-            print(tweets[0]["entities"]["media"]["url"])
+            print(tweets[0]["entities"]["media"][0]["url"])
             found = True
     if not found:
         print("No keywords found:\n%s" % text)
-        print(tweets[0]["entities"]["media"]["url"])
+        print(tweets[0]["entities"]["media"][0]["url"])
     sleep(90)
     check_tweets()
 
