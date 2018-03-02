@@ -20,7 +20,7 @@ def check_tweets():
             found = True
     if not found:
         print("No keywords found:\n%s" % text)
-        print(tweets[0]["entities"]["media"][0]["url"])
+        print(tweets[0].entities.media[0]["url"])
     sleep(90)
     check_tweets()
 
