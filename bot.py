@@ -1,4 +1,4 @@
-from env_vars.py import *
+from env_vars import *
 from keywords import keywords
 from time import sleep
 import tweepy
