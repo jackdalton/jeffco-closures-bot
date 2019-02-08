@@ -1,4 +1,4 @@
-from creds import *
+from env_vars.py import *
 from keywords import keywords
 from time import sleep
 import tweepy
@@ -9,7 +9,7 @@ api = tweepy.API(auth)
 
 
 def check_tweets():
-    tweets = api.user_timeline("JeffcoSchoolsCo", count=1)
+    tweets = api.user_timeline(account, count=1)
     text = tweets[0].text
     found = False
     for i in keywords:
